@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dagger-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dagger-demo
+  template:
+    metadata:
+      labels:
+        app: dagger-demo
+    spec:
+      containers:
+        - name: dagger-demo
+          image: ghcr.io/myrepo/dagger-demo:latest  # Ide fogja feltölteni az image-et
+          ports:
+            - containerPort: 5000
