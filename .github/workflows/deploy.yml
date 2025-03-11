@@ -1,26 +1,21 @@
-name: Deploy to Kubernetes with Dagger
-
+name: Deploy with Dagger
 on:
   push:
     branches: [main]
 
 jobs:
   deploy:
+    name: Deploy Application
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      
+      - name: Call Dagger Function
+        uses: dagger/dagger-for-github@8.0.0
         with:
-          python-version: '3.9'
-
-      - name: Install Dagger
-        run: pip install dagger-io
-
-      - name: Run Dagger pipeline
-        env:
-          KUBECONFIG: ${{ secrets.KUBECONFIG }}  # Kubernetes hitelesítéshez
-        run: python dagger_pipeline.py
+          version: "latest"
+          verb: call
+          module: github.com/YOUR_GITHUB_USERNAME/YOUR_DAGGER_MODULE@latest
+          args: publish
+          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
