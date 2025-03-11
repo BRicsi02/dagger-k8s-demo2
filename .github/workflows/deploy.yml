@@ -16,6 +16,6 @@ jobs:
         with:
           version: "latest"
           verb: call
-          module: github.com/BRicsi02/dagger-k8s-demo@latest
+          module: https://github.com/BRicsi02/dagger-k8s-demo2.git
           args: publish
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
