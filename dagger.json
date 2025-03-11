@@ -1,0 +1,9 @@
+{
+  "name": "dagger-k8s-demo2",
+  "engineVersion": "v0.15.4",
+  "sdk": {
+    "source": "python"
+  },
+  "dependencies": [],
+  "source": "dagger"
+}
